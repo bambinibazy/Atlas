@@ -1,0 +1,27 @@
+{
+ "result": {
+  "data": [
+   {
+    "SECUCODE": "00700.HK",
+    "REPORT_LIST": [
+     {
+      "REPORT_DATE": "2025-12-31 00:00:00",
+      "REPORT_TYPE": "年报",
+      "CURRENCY": "人民币",
+      "ACCOUNT_STANDARD": "HKFRS"
+     },
+     {
+      "REPORT_DATE": "2025-06-30 00:00:00",
+      "REPORT_TYPE": "中报",
+      "CURRENCY": "人民币"
+     },
+     {
+      "REPORT_DATE": "2024-12-31 00:00:00",
+      "REPORT_TYPE": "年报",
+      "CURRENCY": "人民币"
+     }
+    ]
+   }
+  ]
+ }
+}

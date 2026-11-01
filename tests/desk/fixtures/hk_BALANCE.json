@@ -1,0 +1,66 @@
+{
+ "result": {
+  "data": [
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "总资产",
+    "AMOUNT": 2000
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "总负债",
+    "AMOUNT": 800
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "股东权益",
+    "AMOUNT": 1100
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "流动资产合计",
+    "AMOUNT": 900
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "流动负债合计",
+    "AMOUNT": 600
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "现金及等价物",
+    "AMOUNT": 400
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "存货",
+    "AMOUNT": 20
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "应收帐款",
+    "AMOUNT": 120
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "应付帐款",
+    "AMOUNT": 150
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "总资产",
+    "AMOUNT": 1800
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "总负债",
+    "AMOUNT": 760
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "股东权益",
+    "AMOUNT": 960
+   }
+  ]
+ }
+}

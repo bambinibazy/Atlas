@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="html">ArXiv Query (test fixture)</title>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00001v2</id>
+    <updated>2026-10-20T17:59:00Z</updated>
+    <published>2026-10-19T17:59:00Z</published>
+    <title>Test Fixture: Sparse Mixture of Experts for Long Context
+      Language Models</title>
+    <summary>  We study large language model pretraining with a mixture of experts
+      architecture and long context attention. Code is available at
+      https://github.com/example-lab/sparse-moe.  </summary>
+    <author><name>Alice Example</name></author>
+    <author><name>Bob Example</name></author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">12 pages, 5 figures</arxiv:comment>
+    <link href="http://arxiv.org/abs/2610.00001v2" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2610.00001v2" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00002v1</id>
+    <updated>2026-10-20T10:00:00Z</updated>
+    <published>2026-10-20T10:00:00Z</published>
+    <title>Test Fixture: Transformer Forecasting of Stock Volatility</title>
+    <summary>We apply deep learning to financial time series and portfolio construction.</summary>
+    <author><name>Carol Example</name></author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">Code: https://github.com/example/volformer.git</arxiv:comment>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="q-fin.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-fin.ST" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00003v1</id>
+    <updated>2026-10-18T10:00:00Z</updated>
+    <published>2026-10-18T10:00:00Z</published>
+    <title>Test Fixture: Decoding Speech from EEG with Self-Supervised Encoders</title>
+    <summary>Non-invasive brain-computer interface using neural decoding of EEG recordings.</summary>
+    <author><name>Dan Example</name></author>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="q-bio.NC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.NC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

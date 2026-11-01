@@ -1,0 +1,11 @@
+# 数据由 GitHub Actions 生成并发布到 public 分支，不提交到 main
+site/data/
+site/markets/data/
+site/ai/data/
+site/feed.xml
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store

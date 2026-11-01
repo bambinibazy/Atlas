@@ -1,0 +1,110 @@
+name: 更新数据并发布
+
+# 每 30 分钟运行一次；每次运行哪些部分由 pipelines/update.py 按上次成功时间决定：
+#   行情快讯 每次 · 资讯与知识库 每 6 小时 · AI 前沿 每天 · 上市公司财报 每周
+on:
+  schedule:
+    - cron: "7,37 * * * *"   # GitHub 高峰期可能延迟几分钟到十几分钟，偶尔会跳过一次
+  workflow_dispatch:
+    inputs:
+      parts:
+        description: "强制运行的部分：markets, news, financials, ai（逗号分隔），all 为全部；留空则按到期情况"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths: ["site/**", "config/**", "pipelines/**", "content/**", "tests/**", "requirements.txt", ".github/workflows/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: decision-desk
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 取回上次发布的数据（去重、保留历史、某个源失败时沿用旧值）
+        run: |
+          if git fetch --depth=1 origin public 2>/dev/null; then
+            for p in data markets/data ai/data feed.xml; do
+              if git cat-file -e "FETCH_HEAD:$p" 2>/dev/null; then
+                git archive FETCH_HEAD "$p" | tar -x -C site && echo "已取回 $p"
+              fi
+            done
+          else
+            echo "首次运行，没有历史数据"
+          fi
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt pytest
+
+      - name: 离线测试（Python + 前端计算公式）
+        run: |
+          python -m pytest -q
+          node --test tests/desk/js/*.test.js
+
+      - name: 决定本次运行哪些部分
+        id: plan
+        env:
+          PARTS_INPUT: ${{ github.event.inputs.parts }}
+        run: |
+          if [ -n "$PARTS_INPUT" ]; then
+            PLAN=$(python -m pipelines.update --parts "$PARTS_INPUT" --plan)
+          else
+            PLAN=$(python -m pipelines.update --plan)
+          fi
+          echo "parts=$PLAN" >> "$GITHUB_OUTPUT"
+          echo "本次运行：${PLAN:-没有到期的部分}"
+
+      - name: 启动 RSSHub（只在更新资讯时）
+        if: contains(steps.plan.outputs.parts, 'news')
+        run: |
+          docker run -d --name rsshub -p 1200:1200 -e NODE_ENV=production -e CACHE_TYPE=memory diygod/rsshub:latest
+          for i in $(seq 1 45); do
+            curl -sf http://localhost:1200/healthz >/dev/null && echo "RSSHub 已就绪" && exit 0
+            sleep 2
+          done
+          echo "RSSHub 未就绪，资讯会改用公共实例 rsshub.app"
+
+      - name: 抓取数据
+        env:
+          PARTS: ${{ steps.plan.outputs.parts }}
+          EVENT: ${{ github.event_name }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          COINGECKO_DEMO_KEY: ${{ secrets.COINGECKO_DEMO_KEY }}
+          RSSHUB_BASE: http://localhost:1200
+          RSSHUB_FALLBACKS: https://rsshub.app
+        run: |
+          if [ -z "$SEC_USER_AGENT" ]; then
+            echo "::warning::没有设置 SEC_USER_AGENT，美股财报和美股公告会被 SEC 拒绝（403）。请在 Settings → Secrets and variables → Actions → Variables 里添加，值如：Atlas 你的邮箱"
+          fi
+          python -m pipelines.update --parts "${PARTS:-none}" --event "$EVENT"
+
+      - name: 发布到 public 分支
+        # 每次都用一个全新的单提交覆盖 public 分支，仓库不会因为频繁更新而越来越大
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: public
+          force_orphan: true
+          user_name: "github-actions[bot]"
+          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_message: "data update"

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Test fixture feed</title>
+<item><title>Test fixture: Stocks rally as Nasdaq hits record; Fed rate cut bets rise</title><link>https://example.com/a1</link>
+<guid>a1</guid><pubDate>Sat, 24 Oct 2026 20:05:00 GMT</pubDate><description><![CDATA[<p>Wall Street gained as Treasury yields fell. Test text.</p>]]></description></item>
+<item><title>Test fixture: Oil prices climb on OPEC supply worries</title><link>https://example.com/a2</link>
+<pubDate>Sat, 24 Oct 2026 18:00:00 GMT</pubDate><description>Crude oil and gold rose. Test text.</description></item>
+<item><title>Old item</title><link>https://example.com/old</link><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate></item>
+</channel></rss>

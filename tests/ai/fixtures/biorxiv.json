@@ -1,0 +1,11 @@
+{
+  "messages": [{"status": "ok", "interval": "2026-10-18:2026-10-22", "cursor": 0, "count": 2, "total": "2"}],
+  "collection": [
+    {"doi": "10.1101/2026.10.18.000001", "title": "Test Fixture: A Foundation Model for Hippocampal Recordings",
+     "authors": "Example, F.; Sample, G.", "date": "2026-10-19", "version": "1", "category": "neuroscience",
+     "abstract": "We train a transformer foundation model on large-scale neural recordings. https://github.com/example/hippo-fm", "server": "biorxiv"},
+    {"doi": "10.1101/2026.10.18.000002", "title": "Test Fixture: Synaptic Vesicle Recycling in Mice",
+     "authors": "Example, H.", "date": "2026-10-19", "version": "2", "category": "neuroscience",
+     "abstract": "Electrophysiology of vesicle release in cultured neurons.", "server": "biorxiv"}
+  ]
+}

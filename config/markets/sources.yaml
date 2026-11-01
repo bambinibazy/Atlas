@@ -1,0 +1,213 @@
+# ============================================================
+#  「行情快讯」栏目（原财经雷达）· 数据源与分类配置
+#  改这个文件即可增删数据源、调整自选股和关键词，无需改代码。
+#  每个数据源都可以单独 enabled: false 关闭；某个源失败不影响其他源。
+# ============================================================
+
+settings:
+  site_name: { zh: "行情快讯", en: "Markets" }
+  tagline:
+    zh: "每 30 分钟自动汇总 A 股、港股、美股、全球宏观与加密市场的快讯、行情、公告和经济数据"
+    en: "Flash news, quotes, filings and macro data across China, Hong Kong, US, global and crypto markets, refreshed every 30 minutes"
+  timezone: Asia/Shanghai
+  retention_days:          # 各类内容保留天数
+    flash: 3               # 7x24 快讯量很大，只留 3 天
+    news: 10
+    filing: 14
+    policy: 30
+  max_items_total: 8000
+  summary_max_chars: 360
+  dedupe_window_hours: 3   # 多家快讯报道同一事件时，3 小时内相似度高的合并成一条
+  dedupe_similarity: 0.55
+
+# ------------------------------------------------------------
+# 市场：用于给每条内容打标签。keywords 命中即归入；
+# "=" 开头的关键词区分大小写（避免 "AI" 匹配到 "said" 之类）。
+# ------------------------------------------------------------
+markets:
+  - id: cn
+    name: { zh: "A 股", en: "China A" }
+    keywords: [A股, 沪指, 深成指, 创业板, 科创板, 北交所, 上证, 深证, 沪深, 两市, 涨停, 跌停, 证监会, 上交所, 深交所,
+               北向资金, 融资融券, 沪深300, 中证, 国务院, 发改委, 人民银行, 中国央行, 财政部, 统计局, 降准, LPR,
+               人民币, 地方债, 房地产, 楼市, 社融, 新增贷款, "=CSRC", "=PBOC", "Shanghai Composite", "CSI 300",
+               "China's", "Chinese stocks", "Beijing", "yuan"]
+  - id: hk
+    name: { zh: "港股", en: "Hong Kong" }
+    keywords: [港股, 恒指, 恒生, 港交所, 南向资金, 港元, 香港, 国企指数, 恒生科技, "=HKEX", "Hang Seng", "Hong Kong"]
+  - id: us
+    name: { zh: "美股", en: "US" }
+    keywords: [美股, 道指, 标普, 纳指, 纳斯达克, 道琼斯, 美联储, 鲍威尔, 美债, 非农, 美国CPI, 美国GDP, 华尔街, 美国,
+               "Wall Street", "S&P 500", "Nasdaq", "Dow", "=Fed", "Federal Reserve", "Powell", "Treasury", "Treasuries",
+               "=SEC", "U.S.", "US stocks", "payrolls", "Nvidia", "Apple", "Tesla", "Microsoft"]
+  - id: global
+    name: { zh: "全球宏观", en: "Global macro" }
+    keywords: [欧洲央行, 日本央行, 英国央行, 欧元, 日元, 英镑, 美元指数, 原油, 油价, 黄金, 金价, 白银, 铜价, 大宗商品, 欧佩克, OPEC,
+               关税, 贸易, 地缘, 欧股, 日经, 外汇, 汇率, "=ECB", "=BOJ", "Bank of England", "euro", "yen", "oil", "crude", "gold",
+               "commodities", "tariff", "tariffs", "Europe", "Japan", "global economy", "IMF"]
+  - id: crypto
+    name: { zh: "加密货币", en: "Crypto" }
+    keywords: [比特币, 以太坊, 加密货币, 数字货币, 虚拟货币, 稳定币, 币圈, 区块链, "Bitcoin", "=BTC", "Ethereum", "=ETH", "crypto",
+               "cryptocurrency", "stablecoin", "Solana", "blockchain", "Coinbase", "Binance"]
+
+# 命中这些关键词的快讯 / 新闻会额外归入“宏观政策”
+policy_keywords: [央行, 人民银行, 国务院, 发改委, 财政部, 证监会, 金融监管总局, 统计局, 降准, 降息, 加息, 利率决议, LPR, MLF, 逆回购,
+                  社融, 新增贷款, CPI, PPI, PMI, GDP, 非农, 失业率, 零售销售, 美联储, 欧洲央行, 日本央行, 议息, 货币政策, 财政政策,
+                  关税, "Federal Reserve", "=Fed", "=FOMC", "=ECB", "=BOJ", "central bank", "rate cut", "rate hike",
+                  "inflation", "=CPI", "=GDP", "=PMI", "payrolls", "jobless", "unemployment", "tariff", "Treasury yields"]
+
+# ------------------------------------------------------------
+# 中文 7x24 快讯（接口参考 AKShare 开源实现）
+# ------------------------------------------------------------
+flash:
+  cls:          # 财联社电报，带“重要”等级
+    enabled: true
+    name: { zh: "财联社", en: "CLS" }
+    pages: 6            # 每页 50 条，向前翻页直到碰到上次已抓过的内容
+  sina:         # 新浪财经 7x24
+    enabled: true
+    name: { zh: "新浪财经", en: "Sina Finance" }
+    pages: 3
+  eastmoney:    # 东方财富全球财经快讯
+    enabled: true
+    name: { zh: "东方财富", en: "Eastmoney" }
+  ths:          # 同花顺全球财经直播
+    enabled: true
+    name: { zh: "同花顺", en: "10jqka" }
+    pages: 2
+
+# ------------------------------------------------------------
+# RSS 新闻源：可随意增删。markets 是该源默认所属市场（内容关键词还会再补充标签）
+# type: news（新闻）或 policy（官方政策发布）
+# ------------------------------------------------------------
+rss:
+  - { id: cnbc-top, name: "CNBC", url: "https://www.cnbc.com/id/100003114/device/rss/rss.html", markets: [us], type: news }
+  - { id: cnbc-finance, name: "CNBC Finance", url: "https://www.cnbc.com/id/10000664/device/rss/rss.html", markets: [us], type: news }
+  - { id: cnbc-economy, name: "CNBC Economy", url: "https://www.cnbc.com/id/20910258/device/rss/rss.html", markets: [us], type: news }
+  - { id: bloomberg-markets, name: "Bloomberg", url: "https://www.bloomberg.com/feeds/markets/news.rss", markets: [], type: news }
+  - { id: bloomberg-economics, name: "Bloomberg Economics", url: "https://www.bloomberg.com/feeds/economics/news.rss", markets: [global], type: news }
+  - { id: ft-markets, name: "Financial Times", url: "https://www.ft.com/markets?format=rss", markets: [], type: news }
+  - { id: ft-economy, name: "FT Global Economy", url: "https://www.ft.com/global-economy?format=rss", markets: [global], type: news }
+  - { id: marketwatch, name: "MarketWatch", url: "https://feeds.marketwatch.com/marketwatch/topstories", markets: [us], type: news }
+  - { id: seekingalpha, name: "Seeking Alpha", url: "https://seekingalpha.com/market_currents.xml", markets: [us], type: news }
+  - { id: coindesk, name: "CoinDesk", url: "https://www.coindesk.com/arc/outboundfeeds/rss/", markets: [crypto], type: news }
+  - { id: cointelegraph, name: "Cointelegraph", url: "https://cointelegraph.com/rss", markets: [crypto], type: news }
+  - { id: fed, name: "Federal Reserve", url: "https://www.federalreserve.gov/feeds/press_all.xml", markets: [us], type: policy }
+  - { id: ecb, name: "ECB", url: "https://www.ecb.europa.eu/rss/press.html", markets: [global], type: policy }
+  - { id: sec-press, name: "SEC", url: "https://www.sec.gov/news/pressreleases.rss", markets: [us], type: policy }
+
+# ------------------------------------------------------------
+# 行情板。provider:
+#   em      东方财富 K 线（secid = 市场代码.证券代码）
+#   yield   东方财富中美国债收益率
+#   gecko   CoinGecko（id 为 CoinGecko 币种 id）
+# ------------------------------------------------------------
+# 首页深蓝区里显示的行情（填下面 quotes.groups 里的 id，按顺序显示）
+home_quotes: [sh, hs300, hsi, spx, ndx, usdcnh, gold]
+
+quotes:
+  history_days: 30         # 走势线天数
+  groups:
+    - id: cn
+      name: { zh: "A 股", en: "China A" }
+      items:
+        - { id: sh, name: { zh: "上证指数", en: "Shanghai" }, provider: em, secid: "1.000001" }
+        - { id: sz, name: { zh: "深证成指", en: "Shenzhen" }, provider: em, secid: "0.399001" }
+        - { id: cyb, name: { zh: "创业板指", en: "ChiNext" }, provider: em, secid: "0.399006" }
+        - { id: hs300, name: { zh: "沪深 300", en: "CSI 300" }, provider: em, secid: "1.000300" }
+        - { id: kc50, name: { zh: "科创 50", en: "STAR 50" }, provider: em, secid: "1.000688" }
+    - id: hk
+      name: { zh: "港股", en: "Hong Kong" }
+      items:
+        - { id: hsi, name: { zh: "恒生指数", en: "Hang Seng" }, provider: em, secid: "100.HSI" }
+        - { id: hstech, name: { zh: "恒生科技", en: "HS Tech" }, provider: em, secid: "124.HSTECH" }
+        - { id: hscei, name: { zh: "国企指数", en: "HSCEI" }, provider: em, secid: "100.HSCEI" }
+    - id: us
+      name: { zh: "美股", en: "US" }
+      items:
+        - { id: dji, name: { zh: "道琼斯", en: "Dow Jones" }, provider: em, secid: "100.DJIA" }
+        - { id: spx, name: { zh: "标普 500", en: "S&P 500" }, provider: em, secid: "100.SPX" }
+        - { id: ndx, name: { zh: "纳斯达克", en: "Nasdaq" }, provider: em, secid: "100.NDX" }
+    - id: global
+      name: { zh: "全球", en: "Global" }
+      items:
+        - { id: n225, name: { zh: "日经 225", en: "Nikkei 225" }, provider: em, secid: "100.N225" }
+        - { id: dax, name: { zh: "德国 DAX", en: "DAX" }, provider: em, secid: "100.GDAXI" }
+        - { id: ftse, name: { zh: "富时 100", en: "FTSE 100" }, provider: em, secid: "100.FTSE" }
+        - { id: dxy, name: { zh: "美元指数", en: "Dollar Index" }, provider: em, secid: "100.UDI" }
+    - id: fx
+      name: { zh: "外汇", en: "FX" }
+      items:
+        - { id: usdcnh, name: { zh: "离岸人民币", en: "USD/CNH" }, provider: em, secid: "133.USDCNH", decimals: 4 }
+        - { id: eurusd, name: { zh: "欧元/美元", en: "EUR/USD" }, provider: em, secid: "119.EURUSD", decimals: 4 }
+        - { id: usdjpy, name: { zh: "美元/日元", en: "USD/JPY" }, provider: em, secid: "119.USDJPY", decimals: 2 }
+    - id: commodity
+      name: { zh: "商品", en: "Commodities" }
+      items:
+        - { id: gold, name: { zh: "黄金", en: "Gold" }, provider: em, secid: "101.GC00Y" }
+        - { id: wti, name: { zh: "WTI 原油", en: "WTI" }, provider: em, secid: "102.CL00Y" }
+        - { id: brent, name: { zh: "布伦特", en: "Brent" }, provider: em, secid: "112.B00Y" }
+        - { id: copper, name: { zh: "铜", en: "Copper" }, provider: em, secid: "101.HG00Y", decimals: 3 }
+    - id: rates
+      name: { zh: "国债收益率", en: "Bond yields" }
+      items:
+        - { id: cn10y, name: { zh: "中国 10 年", en: "China 10Y" }, provider: yield, field: EMM00166466 }
+        - { id: us10y, name: { zh: "美国 10 年", en: "US 10Y" }, provider: yield, field: EMG00001310 }
+        - { id: us2y, name: { zh: "美国 2 年", en: "US 2Y" }, provider: yield, field: EMG00001306 }
+    - id: crypto
+      name: { zh: "加密货币", en: "Crypto" }
+      items:
+        - { id: btc, name: { zh: "比特币", en: "Bitcoin" }, provider: gecko, coin: bitcoin }
+        - { id: eth, name: { zh: "以太坊", en: "Ethereum" }, provider: gecko, coin: ethereum }
+        - { id: sol, name: { zh: "Solana", en: "Solana" }, provider: gecko, coin: solana }
+        - { id: bnb, name: { zh: "BNB", en: "BNB" }, provider: gecko, coin: binancecoin }
+    - id: watch
+      name: { zh: "自选股", en: "Watchlist" }
+      items:
+        - { id: maotai, name: { zh: "贵州茅台", en: "Moutai" }, provider: em, secid: "1.600519" }
+        - { id: catl, name: { zh: "宁德时代", en: "CATL" }, provider: em, secid: "0.300750" }
+        - { id: tencent, name: { zh: "腾讯控股", en: "Tencent" }, provider: em, secid: "116.00700" }
+        - { id: baba-hk, name: { zh: "阿里巴巴", en: "Alibaba" }, provider: em, secid: "116.09988" }
+        - { id: aapl, name: { zh: "苹果", en: "Apple" }, provider: em, secid: "105.AAPL" }
+        - { id: nvda, name: { zh: "英伟达", en: "Nvidia" }, provider: em, secid: "105.NVDA" }
+        - { id: tsla, name: { zh: "特斯拉", en: "Tesla" }, provider: em, secid: "105.TSLA" }
+
+# ------------------------------------------------------------
+# 公司公告与财报
+# ------------------------------------------------------------
+filings:
+  a_share:                 # 东方财富公告（沪深京 A 股）
+    enabled: true
+    lookback_days: 7
+    stocks: ["600519", "300750", "601318", "000858", "600036"]   # 自选股：抓取全部公告
+    # 全市场按类别抓取（量较大，可留空）。可选：财务报告 融资公告 风险提示 信息变更 重大事项 资产重组 持股变动
+    market_wide_types: [资产重组]
+    market_wide_max: 100
+  hkex:                    # 港交所披露易“最新上市公司公告”（实验性，接口未公开文档，不可用时请关闭）
+    enabled: true
+    stocks: ["00700", "09988", "03690", "01810", "00005"]   # 只保留这些股票的公告；留空则保留全部（量大）
+    pages: 3
+  sec:                     # 美国 SEC EDGAR
+    enabled: true
+    tickers: [AAPL, MSFT, NVDA, TSLA, AMZN, GOOGL, META, BABA, PDD, JD]
+    forms: ["8-K", "10-K", "10-Q", "6-K", "20-F", "S-1", "F-1", "DEF 14A"]
+    lookback_days: 14
+
+# ------------------------------------------------------------
+# 宏观数据：中国来自东方财富数据中心，美国来自 FRED
+# change: yoy = 计算同比；diff = 计算与上期差值（如非农新增）；none = 直接用原值
+# ------------------------------------------------------------
+macro:
+  cn:
+    - { id: cn-gdp, name: { zh: "GDP 同比", en: "GDP YoY" }, report: RPT_ECONOMY_GDP, field: SUM_SAME, unit: "%" }
+    - { id: cn-cpi, name: { zh: "CPI 同比", en: "CPI YoY" }, report: RPT_ECONOMY_CPI, field: NATIONAL_SAME, unit: "%" }
+    - { id: cn-ppi, name: { zh: "PPI 同比", en: "PPI YoY" }, report: RPT_ECONOMY_PPI, field: BASE_SAME, unit: "%" }
+    - { id: cn-pmi, name: { zh: "制造业 PMI", en: "Manufacturing PMI" }, report: RPT_ECONOMY_PMI, field: MAKE_INDEX, unit: "" }
+    - { id: cn-m2, name: { zh: "M2 同比", en: "M2 YoY" }, report: RPT_ECONOMY_CURRENCY_SUPPLY, field: BASIC_CURRENCY_SAME, unit: "%" }
+    - { id: cn-lpr, name: { zh: "1 年期 LPR", en: "1Y LPR" }, report: RPTA_WEB_RATE, field: LPR1Y, date_field: TRADE_DATE, unit: "%" }
+  us:
+    - { id: us-gdp, name: { zh: "实际 GDP 环比年化", en: "Real GDP QoQ ann." }, series: A191RL1Q225SBEA, unit: "%", change: none }
+    - { id: us-cpi, name: { zh: "CPI 同比", en: "CPI YoY" }, series: CPIAUCSL, unit: "%", change: yoy }
+    - { id: us-core, name: { zh: "核心 PCE 同比", en: "Core PCE YoY" }, series: PCEPILFE, unit: "%", change: yoy }
+    - { id: us-unrate, name: { zh: "失业率", en: "Unemployment" }, series: UNRATE, unit: "%", change: none }
+    - { id: us-nfp, name: { zh: "非农新增（千人）", en: "Payrolls (k)" }, series: PAYEMS, unit: "k", change: diff }
+    - { id: us-ffr, name: { zh: "联邦基金利率上限", en: "Fed funds (upper)" }, series: DFEDTARU, unit: "%", change: none, frequency: daily }

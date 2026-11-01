@@ -1,0 +1,51 @@
+{
+ "result": {
+  "data": [
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "营业额",
+    "AMOUNT": 1500
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "销售成本",
+    "AMOUNT": -700
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "毛利",
+    "AMOUNT": 800
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "经营溢利",
+    "AMOUNT": 450
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "股东应占溢利",
+    "AMOUNT": 380
+   },
+   {
+    "REPORT_DATE": "2025-12-31 00:00:00",
+    "STD_ITEM_NAME": "研发费用",
+    "AMOUNT": 120
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "营业额",
+    "AMOUNT": 1300
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "毛利",
+    "AMOUNT": 650
+   },
+   {
+    "REPORT_DATE": "2024-12-31 00:00:00",
+    "STD_ITEM_NAME": "股东应占溢利",
+    "AMOUNT": 300
+   }
+  ]
+ }
+}

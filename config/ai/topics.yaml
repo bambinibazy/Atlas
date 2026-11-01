@@ -1,0 +1,409 @@
+# ============================================================
+#  「AI 前沿」栏目（原 AI 前沿雷达）· 主题与数据源配置
+#  改这个文件即可增删主题、调整关键词，无需改代码。
+# ============================================================
+
+settings:
+  site_name: { zh: "AI 前沿", en: "AI Frontier" }
+  tagline:
+    zh: "每天自动收集 AI 及交叉学科的最新论文、开源项目与模型"
+    en: "Daily digest of new AI papers, open-source repos and models across disciplines"
+  retention_days: 60          # 数据保留天数（按发布日期）
+  max_items_total: 5000       # 总条目上限，超出按日期淘汰最旧的
+  summary_max_chars: 900      # 摘要截断长度
+
+  arxiv:
+    enabled: true
+    max_results_per_query: 80 # 每条查询抓取的最新论文数
+    lookback_days: 10         # 只保留最近 N 天提交的论文
+    delay_seconds: 3.5        # arXiv 要求两次请求间隔 ≥3 秒
+
+  github:
+    enabled: true
+    created_within_days: 45   # 新项目：最近 N 天内创建
+    min_stars: 20             # 星标下限
+    per_query: 25
+    trending_topics:          # 额外抓取：这些 GitHub topic 下最近活跃且高星的仓库
+      - llm
+      - large-language-models
+      - ai-agents
+      - diffusion-models
+
+  huggingface:
+    enabled: true
+    daily_papers_days: 4      # 抓取最近 N 天的 HF 每日论文
+    trending_models: 60       # 全站热门模型数量
+    trending_datasets: 30     # 全站热门数据集数量
+    per_topic_search: 15      # 每个主题按关键词搜索的模型数量
+
+  biorxiv:
+    enabled: true
+    lookback_days: 4
+    # bioRxiv 只看这些分区；medRxiv 看全部分区。两者都要求出现 AI 关键词才会收录。
+    biorxiv_categories: [neuroscience, bioinformatics, "systems biology", genomics]
+    max_pages_per_server: 25
+
+# 判定“与 AI 相关”的通用关键词（用于 bioRxiv/medRxiv 等非 AI 原生来源的过滤）
+ai_keywords:
+  - machine learning
+  - deep learning
+  - neural network
+  - artificial intelligence
+  - large language model
+  - language model
+  - "=LLM"
+  - "=LLMs"
+  - transformer
+  - foundation model
+  - convolutional
+  - generative model
+  - generative AI
+  - "=GPT"
+  - reinforcement learning
+  - graph neural network
+  - self-supervised
+  - diffusion model
+  - "=AI"
+
+# ------------------------------------------------------------
+# 主题定义
+#   id            网址里使用的短名
+#   name          中英文名称
+#   kind          domain = 交叉学科主题（优先归类）；general = 通用 AI 主题
+#   arxiv_queries arXiv 检索式（语法见 https://info.arxiv.org/help/api/user-manual.html）
+#   arxiv_categories  属于这些 arXiv 分类的论文会加分
+#   keywords      用于给所有来源的条目自动打标签；"=" 开头表示区分大小写
+#   github_queries    GitHub 仓库搜索词
+#   hf_search     Hugging Face 模型名搜索词
+# ------------------------------------------------------------
+topics:
+  - id: brain
+    name: { zh: "脑科学", en: "Brain Science" }
+    description:
+      zh: "NeuroAI、脑机接口、神经解码、类脑计算"
+      en: "NeuroAI, brain-computer interfaces, neural decoding, neuromorphic computing"
+    kind: domain
+    arxiv_queries:
+      - 'cat:q-bio.NC AND (abs:learning OR abs:"neural network" OR abs:transformer OR abs:"language model")'
+      - '(abs:EEG OR abs:fMRI OR abs:MEG OR abs:"brain-computer interface" OR abs:"neural decoding" OR abs:neuroscience) AND (cat:cs.LG OR cat:cs.AI OR cat:eess.SP OR cat:cs.HC)'
+      - 'cat:cs.NE AND (abs:"spiking neural network" OR abs:neuromorphic OR abs:"biologically plausible")'
+    arxiv_categories: [q-bio.NC]
+    keywords:
+      - neuroscience
+      - neural decoding
+      - brain decoding
+      - brain-computer interface
+      - brain computer interface
+      - "=BCI"
+      - "=EEG"
+      - "=fMRI"
+      - "=MEG"
+      - "=ECoG"
+      - neuroimaging
+      - neuromorphic
+      - spiking neural network
+      - connectome
+      - cortex
+      - cortical
+      - hippocampus
+      - "=NeuroAI"
+      - neural recording
+      - neural population
+      - brain
+      - neuron
+      - cognitive neuroscience
+      - visual cortex
+    github_queries:
+      - brain-computer interface
+      - EEG deep learning
+      - fMRI decoding
+      - spiking neural network
+      - computational neuroscience
+    hf_search: [eeg, brain, neuro, fmri]
+
+  - id: models
+    name: { zh: "AI 模型", en: "AI Models" }
+    description:
+      zh: "大语言模型、多模态、扩散模型、推理与训练方法"
+      en: "LLMs, multimodal and diffusion models, reasoning, training methods"
+    kind: general
+    arxiv_queries:
+      - '(cat:cs.CL OR cat:cs.LG OR cat:cs.AI) AND (abs:"large language model" OR abs:"foundation model" OR abs:pretraining OR abs:"scaling law" OR abs:"mixture of experts")'
+      - '(cat:cs.CV OR cat:cs.LG) AND (abs:"diffusion model" OR abs:"vision-language" OR abs:multimodal OR abs:"world model")'
+      - '(cat:cs.CL OR cat:cs.LG) AND (abs:reasoning OR abs:RLHF OR abs:alignment OR abs:"reinforcement learning") AND abs:"language model"'
+    arxiv_categories: [cs.CL, cs.LG, cs.CV, cs.AI, stat.ML]
+    keywords:
+      - large language model
+      - language model
+      - "=LLM"
+      - "=LLMs"
+      - "=VLM"
+      - "=MLLM"
+      - foundation model
+      - pretraining
+      - pre-training
+      - post-training
+      - fine-tuning
+      - transformer
+      - attention mechanism
+      - state space model
+      - mixture of experts
+      - "=MoE"
+      - diffusion model
+      - flow matching
+      - vision-language
+      - multimodal
+      - reasoning
+      - chain-of-thought
+      - "=RLHF"
+      - "=DPO"
+      - alignment
+      - scaling law
+      - quantization
+      - distillation
+      - tokenizer
+      - world model
+      - long context
+      - inference efficiency
+    github_queries:
+      - large language model
+      - LLM inference
+      - multimodal model
+      - diffusion model
+      - LLM fine-tuning
+    hf_search: []
+
+  - id: apps
+    name: { zh: "AI 应用", en: "AI Applications" }
+    description:
+      zh: "智能体、RAG、具身智能与机器人、代码生成、自动驾驶等落地方向"
+      en: "Agents, RAG, embodied AI and robotics, code generation, autonomous driving"
+    kind: general
+    arxiv_queries:
+      - '(cat:cs.AI OR cat:cs.CL OR cat:cs.SE) AND (abs:"LLM agent" OR abs:"autonomous agent" OR abs:"multi-agent" OR abs:"tool use" OR abs:"computer use")'
+      - '(cat:cs.RO) AND (abs:learning OR abs:"vision-language-action" OR abs:"foundation model")'
+      - '(cat:cs.IR OR cat:cs.CL) AND (abs:"retrieval-augmented" OR abs:RAG)'
+      - '(cat:cs.SE) AND (abs:"code generation" OR abs:"software engineering agent" OR abs:"program repair")'
+    arxiv_categories: [cs.RO, cs.IR, cs.SE, cs.HC, cs.MA]
+    keywords:
+      - agent
+      - agents
+      - agentic
+      - multi-agent
+      - tool use
+      - computer use
+      - retrieval-augmented
+      - "=RAG"
+      - robot
+      - robotics
+      - embodied
+      - vision-language-action
+      - "=VLA"
+      - manipulation
+      - autonomous driving
+      - self-driving
+      - code generation
+      - coding assistant
+      - software engineering
+      - recommender
+      - recommendation
+      - chatbot
+      - education
+      - speech recognition
+      - text-to-speech
+      - video generation
+      - "=GUI"
+      - web agent
+      - copilot
+      - workflow
+      - "=MCP"
+    github_queries:
+      - AI agent framework
+      - RAG
+      - embodied AI
+      - coding agent
+      - MCP server
+    hf_search: [agent, robot, vla, tts, asr]
+
+  - id: medicine
+    name: { zh: "AI 医学", en: "AI for Medicine" }
+    description:
+      zh: "医学影像、临床大模型、药物发现、蛋白质与基因组"
+      en: "Medical imaging, clinical LLMs, drug discovery, proteins and genomics"
+    kind: domain
+    arxiv_queries:
+      - '(cat:eess.IV OR cat:cs.CV OR cat:cs.LG OR cat:cs.CL OR cat:cs.AI) AND (abs:medical OR abs:clinical OR abs:radiology OR abs:pathology OR abs:healthcare OR abs:"electronic health records")'
+      - '(cat:q-bio.BM OR cat:q-bio.QM OR cat:q-bio.GN) AND (abs:learning OR abs:"language model" OR abs:"neural network" OR abs:diffusion)'
+      - '(cat:cs.LG OR cat:physics.chem-ph) AND (abs:"drug discovery" OR abs:"protein design" OR abs:"molecular generation")'
+    arxiv_categories: [q-bio.BM, q-bio.QM, q-bio.GN, q-bio.TO, eess.IV]
+    keywords:
+      - medical
+      - medicine
+      - clinical
+      - clinic
+      - radiology
+      - pathology
+      - histopathology
+      - patient
+      - patients
+      - healthcare
+      - health care
+      - "=EHR"
+      - electronic health record
+      - diagnosis
+      - diagnostic
+      - disease
+      - cancer
+      - tumor
+      - drug discovery
+      - drug design
+      - protein
+      - molecule
+      - molecular
+      - genomics
+      - single-cell
+      - biomedical
+      - "=MRI"
+      - "=CT"
+      - x-ray
+      - ultrasound
+      - surgery
+      - surgical
+      - medical imaging
+      - antibody
+    github_queries:
+      - medical imaging deep learning
+      - medical LLM
+      - drug discovery deep learning
+      - protein language model
+      - computational pathology
+    hf_search: [med, clinical, bio, protein, pathology, radiology]
+
+  - id: math
+    name: { zh: "AI 数学", en: "AI for Math" }
+    description:
+      zh: "定理证明、形式化（Lean/Isabelle）、数学推理、AI 辅助发现"
+      en: "Theorem proving, formalization (Lean/Isabelle), mathematical reasoning, AI-assisted discovery"
+    kind: domain
+    arxiv_queries:
+      - '(abs:"theorem proving" OR abs:"theorem prover" OR abs:autoformalization OR abs:"formal proof" OR abs:Lean4 OR abs:"Lean 4" OR abs:Isabelle OR abs:mathlib)'
+      - '(cat:cs.CL OR cat:cs.AI OR cat:cs.LG) AND (abs:"mathematical reasoning" OR abs:"math reasoning" OR abs:"olympiad")'
+      - '(cat:math.CO OR cat:math.NT OR cat:math.HO OR cat:math.NA OR cat:math.OC OR cat:cs.LO) AND (abs:"machine learning" OR abs:"neural network" OR abs:"language model" OR abs:"reinforcement learning")'
+    arxiv_categories: [cs.LO, math.HO, math.CO, math.NT, math.NA, math.LO]
+    keywords:
+      - theorem proving
+      - theorem prover
+      - automated theorem
+      - formal proof
+      - formal verification
+      - formalization
+      - autoformalization
+      - "=Lean"
+      - "=Lean4"
+      - "=Lean 4"
+      - mathlib
+      - "=Isabelle"
+      - "=Coq"
+      - "=Rocq"
+      - mathematical reasoning
+      - math reasoning
+      - mathematics
+      - mathematical
+      - olympiad
+      - "=IMO"
+      - conjecture
+      - combinatorics
+      - number theory
+      - symbolic regression
+      - proof
+    github_queries:
+      - theorem proving LLM
+      - Lean 4 prover
+      - autoformalization
+      - math reasoning LLM
+    hf_search: [math, prover, lean]
+
+  - id: physics
+    name: { zh: "AI 物理", en: "AI for Physics" }
+    description:
+      zh: "物理信息神经网络、神经算子、量子、材料、天气与气候"
+      en: "Physics-informed networks, neural operators, quantum, materials, weather and climate"
+    kind: domain
+    arxiv_queries:
+      - '(cat:physics.comp-ph OR cat:physics.data-an OR cat:cond-mat.dis-nn OR cat:cond-mat.mtrl-sci OR cat:physics.flu-dyn OR cat:physics.ao-ph OR cat:astro-ph.IM OR cat:hep-ex OR cat:hep-ph) AND (abs:"machine learning" OR abs:"deep learning" OR abs:"neural network" OR abs:transformer)'
+      - '(cat:cs.LG OR cat:cs.AI) AND (abs:"physics-informed" OR abs:"neural operator" OR abs:PDE OR abs:"weather forecasting" OR abs:"climate model")'
+      - 'cat:quant-ph AND (abs:"machine learning" OR abs:"neural network" OR abs:"language model")'
+    arxiv_categories: [physics.comp-ph, physics.data-an, cond-mat.dis-nn, cond-mat.mtrl-sci, quant-ph, physics.flu-dyn, physics.ao-ph, astro-ph.IM, hep-ph, hep-ex]
+    keywords:
+      - physics
+      - physical
+      - physics-informed
+      - "=PINN"
+      - "=PINNs"
+      - neural operator
+      - "=PDE"
+      - "=PDEs"
+      - partial differential equation
+      - quantum
+      - molecular dynamics
+      - materials
+      - crystal
+      - fluid
+      - turbulence
+      - weather
+      - climate
+      - particle physics
+      - astrophysics
+      - cosmology
+      - galaxy
+      - condensed matter
+      - hamiltonian
+      - plasma
+      - fusion
+      - interatomic potential
+    github_queries:
+      - physics-informed neural network
+      - neural operator
+      - weather forecasting deep learning
+      - machine learning interatomic potential
+      - quantum machine learning
+    hf_search: [physics, weather, climate, materials]
+
+  - id: finance
+    name: { zh: "AI 金融", en: "AI for Finance" }
+    description:
+      zh: "量化交易、金融大模型、风险与信用、资产定价"
+      en: "Quant trading, financial LLMs, risk and credit, asset pricing"
+    kind: domain
+    arxiv_queries:
+      - '(cat:q-fin.CP OR cat:q-fin.PM OR cat:q-fin.ST OR cat:q-fin.TR OR cat:q-fin.RM OR cat:q-fin.GN OR cat:q-fin.MF OR cat:q-fin.PR) AND (abs:learning OR abs:"neural network" OR abs:"language model" OR abs:LLM OR abs:AI)'
+      - '(cat:cs.LG OR cat:cs.CL OR cat:cs.AI) AND (abs:"stock" OR abs:"financial" OR abs:"trading" OR abs:"portfolio")'
+    arxiv_categories: [q-fin.CP, q-fin.PM, q-fin.ST, q-fin.TR, q-fin.RM, q-fin.GN, q-fin.MF, q-fin.PR, econ.EM]
+    keywords:
+      - finance
+      - financial
+      - fintech
+      - stock
+      - stocks
+      - trading
+      - trader
+      - portfolio
+      - asset pricing
+      - market
+      - risk management
+      - credit
+      - fraud detection
+      - quantitative
+      - cryptocurrency
+      - volatility
+      - option pricing
+      - hedge
+      - banking
+      - economic
+      - econometric
+    github_queries:
+      - quantitative trading machine learning
+      - financial LLM
+      - stock prediction deep learning
+      - portfolio reinforcement learning
+    hf_search: [fin, stock, trading]

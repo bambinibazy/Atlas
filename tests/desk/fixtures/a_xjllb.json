@@ -1,0 +1,19 @@
+{
+ "data": [
+  {
+   "REPORT_DATE": "2025-12-31 00:00:00",
+   "NETCASH_OPERATE": 70,
+   "CONSTRUCT_LONG_ASSET": 90
+  },
+  {
+   "REPORT_DATE": "2024-12-31 00:00:00",
+   "NETCASH_OPERATE": 80,
+   "CONSTRUCT_LONG_ASSET": 100
+  },
+  {
+   "REPORT_DATE": "2023-12-31 00:00:00",
+   "NETCASH_OPERATE": 60,
+   "CONSTRUCT_LONG_ASSET": 70
+  }
+ ]
+}

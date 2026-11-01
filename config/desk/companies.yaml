@@ -1,0 +1,80 @@
+# ============================================================
+#  财报分析覆盖的上市公司。增删公司后推送即可，下次每周更新时生效。
+#  industry 用于同行业对比（同一行业至少 3 家，中位数才有意义；跨市场的公司也可以放在同一行业）。
+#  银行、保险、券商的报表结构不同，毛利率、周转天数等指标不适用，暂不收录。
+#
+#  market:  a = 沪深京 A 股（code 为 6 位代码）
+#           hk = 港股（code 为 5 位代码）
+#           us = 美股（code 为股票代码，数据来自 SEC，含在美上市的中概股）
+# ============================================================
+
+industries:
+  food: 食品饮料
+  appliance: 家电与消费品
+  auto: 汽车与新能源
+  pharma: 医药医疗
+  tech: 科技硬件与半导体
+  internet: 互联网与软件
+  industrial: 工业制造
+  energy: 能源与材料
+  retail: 零售与服装
+
+companies:
+  # ---- A 股 ----
+  - { market: a, code: "600519", name: 贵州茅台, industry: food }
+  - { market: a, code: "000858", name: 五粮液, industry: food }
+  - { market: a, code: "600887", name: 伊利股份, industry: food }
+  - { market: a, code: "603288", name: 海天味业, industry: food }
+  - { market: a, code: "000333", name: 美的集团, industry: appliance }
+  - { market: a, code: "000651", name: 格力电器, industry: appliance }
+  - { market: a, code: "600690", name: 海尔智家, industry: appliance }
+  - { market: a, code: "300750", name: 宁德时代, industry: auto }
+  - { market: a, code: "002594", name: 比亚迪, industry: auto }
+  - { market: a, code: "601633", name: 长城汽车, industry: auto }
+  - { market: a, code: "601012", name: 隆基绿能, industry: auto }
+  - { market: a, code: "600276", name: 恒瑞医药, industry: pharma }
+  - { market: a, code: "300760", name: 迈瑞医疗, industry: pharma }
+  - { market: a, code: "603259", name: 药明康德, industry: pharma }
+  - { market: a, code: "002415", name: 海康威视, industry: tech }
+  - { market: a, code: "000725", name: 京东方A, industry: tech }
+  - { market: a, code: "688981", name: 中芯国际, industry: tech }
+  - { market: a, code: "002475", name: 立讯精密, industry: tech }
+  - { market: a, code: "600031", name: 三一重工, industry: industrial }
+  - { market: a, code: "601766", name: 中国中车, industry: industrial }
+  - { market: a, code: "000425", name: 徐工机械, industry: industrial }
+  - { market: a, code: "601857", name: 中国石油, industry: energy }
+  - { market: a, code: "600028", name: 中国石化, industry: energy }
+  - { market: a, code: "601088", name: 中国神华, industry: energy }
+  - { market: a, code: "600019", name: 宝钢股份, industry: energy }
+  - { market: a, code: "601888", name: 中国中免, industry: retail }
+  # ---- 港股 ----
+  - { market: hk, code: "00700", name: 腾讯控股, industry: internet }
+  - { market: hk, code: "03690", name: 美团, industry: internet }
+  - { market: hk, code: "01810", name: 小米集团, industry: tech }
+  - { market: hk, code: "02020", name: 安踏体育, industry: retail }
+  - { market: hk, code: "02319", name: 蒙牛乳业, industry: food }
+  - { market: hk, code: "00175", name: 吉利汽车, industry: auto }
+  - { market: hk, code: "01093", name: 石药集团, industry: pharma }
+  - { market: hk, code: "00883", name: 中国海洋石油, industry: energy }
+  # ---- 美股（SEC）----
+  - { market: us, code: AAPL, name: 苹果, industry: tech }
+  - { market: us, code: NVDA, name: 英伟达, industry: tech }
+  - { market: us, code: INTC, name: 英特尔, industry: tech }
+  - { market: us, code: MSFT, name: 微软, industry: internet }
+  - { market: us, code: GOOGL, name: Alphabet, industry: internet }
+  - { market: us, code: META, name: Meta, industry: internet }
+  - { market: us, code: AMZN, name: 亚马逊, industry: internet }
+  - { market: us, code: BABA, name: 阿里巴巴, industry: internet }
+  - { market: us, code: PDD, name: 拼多多, industry: internet }
+  - { market: us, code: TSLA, name: 特斯拉, industry: auto }
+  - { market: us, code: GM, name: 通用汽车, industry: auto }
+  - { market: us, code: KO, name: 可口可乐, industry: food }
+  - { market: us, code: PEP, name: 百事, industry: food }
+  - { market: us, code: PG, name: 宝洁, industry: appliance }
+  - { market: us, code: JNJ, name: 强生, industry: pharma }
+  - { market: us, code: PFE, name: 辉瑞, industry: pharma }
+  - { market: us, code: CAT, name: 卡特彼勒, industry: industrial }
+  - { market: us, code: XOM, name: 埃克森美孚, industry: energy }
+  - { market: us, code: WMT, name: 沃尔玛, industry: retail }
+  - { market: us, code: COST, name: 好市多, industry: retail }
+  - { market: us, code: NKE, name: 耐克, industry: retail }

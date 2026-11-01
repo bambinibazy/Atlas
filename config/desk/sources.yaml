@@ -1,0 +1,166 @@
+# ============================================================
+#  星图智策 ·「资讯」栏目的来源与分类配置
+#  改这个文件即可增删来源、调整关键词，无需改代码。
+#  每个来源都可以单独 enabled: false 关闭；某个来源失败不影响其他来源。
+# ============================================================
+
+settings:
+  site_name: "星图智策"
+  site_name_en: "Atlas"
+  tagline: "企业管理与财务决策的资讯、工具、方法和上市公司财报分析"
+  retention_days: 45        # 资讯保留天数
+  max_items: 1500
+  summary_max_chars: 280
+
+# ------------------------------------------------------------
+# 资讯分类。每条资讯先取来源默认分类，再按关键词补充（可以同时属于多个分类）
+# "=" 开头的关键词区分大小写
+# ------------------------------------------------------------
+topics:
+  - id: strategy
+    name: 战略与经营
+    keywords: [战略, 商业模式, 竞争, 增长, 并购, 出海, 转型, 创新, 定价, 供应链, 数字化, 人工智能,
+               strategy, strategic, competition, competitive, growth, "M&A", merger, acquisition, innovation,
+               "business model", pricing, "supply chain", transformation, "=AI"]
+  - id: people
+    name: 组织与领导力
+    keywords: [组织, 管理者, 领导力, 团队, 人才, 绩效, 激励, 薪酬, 员工, 文化, 招聘, 裁员, 远程办公,
+               leadership, leader, manager, management, team, talent, employee, culture, hiring, performance,
+               compensation, workforce, "remote work", layoffs]
+  - id: finance
+    name: 财务与会计
+    keywords: [财务, 会计, 审计, 预算, 现金流, 成本, 利润, 估值, 融资, 资本, 财报, 准则, 税,
+               "=CFO", finance, financial, accounting, audit, budget, "cash flow", cost, profit, valuation,
+               capital, earnings, "=IFRS", "=GAAP", tax, treasury]
+  - id: big4
+    name: 四大洞察
+    keywords: []            # 只由来源决定：德勤、普华永道、安永、毕马威的洞察页
+  - id: digital
+    name: 数字化与技术
+    keywords: [数字化, 人工智能, 大模型, 智能体, 自动化, "=RPA", "=ERP", "=SaaS", 数据治理, 区块链, 云计算, 算力,
+               "generative AI", "=GenAI", automation, digital, "=LLM", agentic]
+  - id: governance
+    name: 治理与合规
+    keywords: [公司治理, 董事会, 独立董事, 审计委员会, 监事会, 股东, 信息披露, 内部控制, 合规, 监管, 处罚, 风险管理, ESG,
+               governance, board, director, shareholder, disclosure, compliance, "internal control", regulator,
+               "risk management", "=ESG", "=SEC", proxy, activist]
+
+# ------------------------------------------------------------
+# RSS 来源。topics 为默认分类；region: cn 中国 / intl 国际
+# ------------------------------------------------------------
+rss:
+  - { id: mitsmr, name: "MIT Sloan Management Review", url: "https://sloanreview.mit.edu/feed/", topics: [strategy], region: intl }
+  # 沃顿的官方 RSS 会拦截服务器访问（403），改用 Google 新闻按站点检索，和 HBR 的做法一样
+  - { id: wharton, name: "Knowledge at Wharton", url: "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=when:7d+site:knowledge.wharton.upenn.edu", topics: [], region: intl, via: "Google News" }
+  - { id: mckinsey, name: "McKinsey Insights", url: "https://www.mckinsey.com/insights/rss", topics: [strategy], region: intl }
+  - { id: hbr, name: "Harvard Business Review", url: "https://news.google.com/rss/search?q=when:7d+site:hbr.org&hl=en-US&gl=US&ceid=US:en", topics: [], region: intl, via: "Google News" }
+  - { id: corpgov, name: "Harvard Law School Forum on Corporate Governance", url: "https://corpgov.law.harvard.edu/feed/", topics: [governance], region: intl }
+  - { id: cfodive, name: "CFO Dive", url: "https://www.cfodive.com/feeds/news/", topics: [finance], region: intl }
+  - { id: accountingtoday, name: "Accounting Today", url: "https://www.accountingtoday.com/at-think.rss", topics: [finance], region: intl }
+  - { id: sec-press, name: "SEC", url: "https://www.sec.gov/news/pressreleases.rss", topics: [governance], region: intl, type: policy }
+  - { id: 36kr, name: "36氪", url: "https://36kr.com/feed", topics: [strategy], region: cn }
+  # 普华永道中国网站会拦截服务器访问，改用 Google 新闻按站点检索
+  - { id: pwc-cn-gn, name: "普华永道中国 · 洞察", url: "https://news.google.com/rss/search?hl=zh-CN&gl=CN&ceid=CN:zh-Hans&q=site:pwccn.com+when:30d", topics: [big4], region: cn, via: "Google News" }
+  - { id: techreview, name: "MIT 科技评论", url: "https://www.technologyreview.com/feed/", topics: [digital], region: intl }
+  - id: sspai
+    name: "少数派 · 效率工具"
+    url: "https://sspai.com/feed"
+    topics: [digital]
+    region: cn
+    keywords: [效率, 工具, Excel, 表格, 笔记, 自动化, AI, 记账, 办公, 快捷指令]
+
+# ------------------------------------------------------------
+# 经 RSSHub 生成的订阅源：写 route 而不是 url（路由见 https://docs.rsshub.app/zh/）
+# 工作流运行时会临时启动一个 RSSHub，失败时改用公共实例 rsshub.app
+# keywords：综合类来源只保留含任一关键词的条目
+# ------------------------------------------------------------
+  # 澎湃会拒绝 GitHub 海外服务器的访问（RSSHub 抓取超时），下面 6 个栏目先关闭，
+  # 改用 Google 新闻按站点检索澎湃的财经、企业类文章。以后如果改用国内服务器运行，可以把 enabled 改回 true。
+  - id: thepaper
+    name: "澎湃新闻"
+    url: "https://news.google.com/rss/search?hl=zh-CN&gl=CN&ceid=CN:zh-Hans&q=site:thepaper.cn+when:2d"
+    topics: [finance]
+    region: cn
+    via: "Google News"
+    keywords: [财经, 财务, 会计, 审计, 税, 财报, 业绩, 营收, 利润, 现金流, 上市, IPO, 并购, 融资, 投资, 资本, 公司, 企业, 管理, 治理, 战略, 央企, 国企, 民企, 产业, 数字化, CFO]
+    limit: 40
+  - { id: thepaper-finance, enabled: false, name: "澎湃 · 财经", route: "/thepaper/channel/25951", topics: [finance], region: cn }
+  - { id: thepaper-biz, enabled: false, name: "澎湃 · 澎湃商学院", route: "/thepaper/list/25485", topics: [strategy], region: cn }
+  - { id: thepaper-10pct, enabled: false, name: "澎湃 · 10%公司", route: "/thepaper/list/25434", topics: [strategy], region: cn }
+  - { id: thepaper-chain, enabled: false, name: "澎湃 · 财经上下游", route: "/thepaper/list/25438", topics: [strategy], region: cn }
+  - { id: thepaper-ipo, enabled: false, name: "澎湃 · IPO 最前线", route: "/thepaper/list/119963", topics: [finance, governance], region: cn }
+  - id: thepaper-tech
+    enabled: false
+    name: "澎湃 · 科技"
+    route: "/thepaper/channel/119908"
+    topics: [digital]
+    region: cn
+    keywords: [AI, 人工智能, 大模型, 智能体, 自动化, 数字化, 数据, 企业, 财务, 算力, 云]
+  - id: gov-bmwj
+    name: "国务院 · 部门文件"
+    route: "/gov/zhengce/zhengceku/bmwj"
+    topics: [governance]
+    region: cn
+    type: policy
+    keywords: [财政, 税, 会计, 审计, 金融, 企业, 国资, 证券, 资本]
+  # 税务总局、证监会的列表页是脚本动态加载的，直接抓网页找不到链接，改用 RSSHub 路由
+  - { id: chinatax, name: "国家税务总局", route: "/gov/chinatax/latest", topics: [finance], region: cn, type: policy }
+  - { id: csrc-news, name: "中国证监会", route: "/gov/csrc/news/c100028/common_xq_list.shtml", topics: [governance], region: cn, type: policy }
+  - { id: csrc-rules, name: "证监会规章", route: "/gov/csrc/news/c101954/common_list.shtml", topics: [governance], region: cn, type: policy }
+
+# ------------------------------------------------------------
+# 中国政府网站列表页（实验性）
+# 通用抓取方式：在页面里找出链接地址符合 link_pattern 的 <a>，
+# 标题取链接文字，日期优先从链接地址里解析，其次从链接附近的文字里找 YYYY-MM-DD。
+# 网站改版后如果失效，只需更新 url / link_pattern。
+# ------------------------------------------------------------
+gov_lists:
+  - id: mof-kjs
+    name: "财政部会计司"
+    url: "https://kjs.mof.gov.cn/zhengcefabu/"
+    link_pattern: 't\d{8}_\d+\.s?html?$'
+    topics: [finance]
+  - id: mof-news
+    name: "财政部 · 财政新闻"
+    url: "https://www.mof.gov.cn/zhengwuxinxi/caizhengxinwen/"
+    link_pattern: 't\d{8}_\d+\.s?html?$'
+    topics: [finance]
+  - id: sasac
+    name: "国务院国资委"
+    url: "http://www.sasac.gov.cn/n2588035/index.html"
+    link_pattern: '/n\d+(?:/n\d+)*/c\d+/content\.html$'
+    topics: [governance]
+
+# ------------------------------------------------------------
+# 其他网页列表页：规则同上，写 kind: news 表示是文章而不是政策
+# 四大会计师事务所没有 RSS，抓的是各自中国站的洞察列表页（实验性）
+# exclude_pattern：排除不需要的链接（如打印版）
+# ------------------------------------------------------------
+page_lists:
+  - id: kpmg-cn
+    name: "毕马威中国 · 洞察"
+    url: "https://kpmg.com/cn/zh/home/insights.html"
+    link_pattern: '/cn/zh/(home/)?insights/20\d\d/\d\d/[^/]+\.html$'
+    exclude_pattern: '\.print\.html'
+    topics: [big4]
+    kind: news
+  - id: deloitte-cn
+    name: "德勤中国 · 洞察"
+    url: "https://www.deloitte.com/cn/zh/our-thinking.html"
+    link_pattern: '/cn/zh/.*(our-thinking|insights|research|perspectives)/.+\.html$'
+    topics: [big4]
+    kind: news
+  - id: pwc-cn
+    enabled: false          # 普华永道网站拦截服务器访问（403），改用 rss 里的 pwc-cn-gn
+    name: "普华永道中国 · 研究与洞察"
+    url: "https://www.pwccn.com/zh/research-and-insights.html"
+    link_pattern: '/zh/(research-and-insights|[a-z-]+/publications|[a-z-]+/insights?|press-room/press-releases)/.+\.html$'
+    exclude_pattern: '/contacts/'
+    topics: [big4]
+    kind: news
+  - id: ey-cn
+    name: "安永中国 · 洞察"
+    url: "https://www.ey.com/zh_cn/insights"
+    link_pattern: '/zh_cn/insights/[a-z0-9-]+/[a-z0-9-]+$'
+    topics: [big4]
+    kind: news

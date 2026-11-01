@@ -1,0 +1,30 @@
+[
+  {
+    "paper": {
+      "id": "2610.00001",
+      "authors": [{"_id": "x1", "name": "Alice Example", "hidden": false}],
+      "publishedAt": "2026-10-19T17:59:00.000Z",
+      "title": "Test Fixture: Sparse Mixture of Experts for Long Context Language Models",
+      "summary": "We study large language model pretraining with a mixture of experts architecture.",
+      "upvotes": 57,
+      "ai_summary": "MoE with long context attention improves efficiency.",
+      "ai_keywords": ["mixture of experts", "long context"],
+      "githubRepo": "https://github.com/example-lab/sparse-moe",
+      "githubStars": 340
+    },
+    "publishedAt": "2026-10-20T00:00:00.000Z",
+    "title": "Test Fixture: Sparse Mixture of Experts for Long Context Language Models",
+    "numComments": 3
+  },
+  {
+    "paper": {
+      "id": "2610.00009",
+      "authors": [{"name": "Eve Example"}],
+      "publishedAt": "2026-10-20T08:00:00.000Z",
+      "title": "Test Fixture: Neural Operators for Turbulent Fluid Flow",
+      "summary": "A physics-informed neural operator for PDE surrogate modeling of turbulence.",
+      "upvotes": 12
+    },
+    "numComments": 0
+  }
+]

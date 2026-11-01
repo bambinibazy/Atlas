@@ -1,0 +1,30 @@
+{
+ "genDate": 1,
+ "newsInfoLst": [
+  {
+   "newsId": 11223344,
+   "title": "測試樣本：內幕消息 - 第三季度業績公告日期",
+   "relTime": "24/10/2026 17:05",
+   "webPath": "/listedco/listconews/sehk/2026/1024/test.pdf",
+   "lTxt": "公告及通告 - [董事會會議召開日期]",
+   "stock": [
+    {
+     "sc": "00700",
+     "sn": "測試樣本控股"
+    }
+   ]
+  },
+  {
+   "newsId": 11223345,
+   "title": "不在自选股的公告",
+   "relTime": "24/10/2026 17:00",
+   "webPath": "/x.pdf",
+   "stock": [
+    {
+     "sc": "01234",
+     "sn": "其他"
+    }
+   ]
+  }
+ ]
+}

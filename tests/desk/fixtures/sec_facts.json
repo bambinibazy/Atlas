@@ -1,0 +1,208 @@
+{
+ "cik": 320193,
+ "entityName": "Example Corp (test fixture)",
+ "facts": {
+  "us-gaap": {
+   "Revenues": {
+    "units": {
+     "USD": [
+      {
+       "end": "2023-09-30",
+       "val": 800,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2023-11-01",
+       "start": "2022-10-01"
+      }
+     ]
+    }
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "units": {
+     "USD": [
+      {
+       "end": "2024-09-28",
+       "val": 900,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2024-11-01",
+       "start": "2023-10-01"
+      },
+      {
+       "end": "2024-09-28",
+       "val": 905,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2023-10-01"
+      },
+      {
+       "end": "2025-09-27",
+       "val": 1000,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      },
+      {
+       "end": "2025-06-28",
+       "val": 240,
+       "form": "10-Q",
+       "fp": "Q3",
+       "filed": "2025-11-01",
+       "start": "2025-03-30"
+      },
+      {
+       "end": "2025-06-28",
+       "val": 700,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      }
+     ]
+    }
+   },
+   "CostOfRevenue": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 550,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      },
+      {
+       "end": "2024-09-28",
+       "val": 520,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2023-10-01"
+      }
+     ]
+    }
+   },
+   "NetIncomeLoss": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 200,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      },
+      {
+       "end": "2024-09-28",
+       "val": 180,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2023-10-01"
+      },
+      {
+       "end": "2023-09-30",
+       "val": 150,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2022-10-01"
+      }
+     ]
+    }
+   },
+   "Assets": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 1500,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      },
+      {
+       "end": "2024-09-28",
+       "val": 1400,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      },
+      {
+       "end": "2023-09-30",
+       "val": 1300,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      }
+     ]
+    }
+   },
+   "LiabilitiesAndStockholdersEquity": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 1500,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      }
+     ]
+    }
+   },
+   "StockholdersEquity": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 600,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      },
+      {
+       "end": "2024-09-28",
+       "val": 500,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01"
+      }
+     ]
+    }
+   },
+   "NetCashProvidedByUsedInOperatingActivities": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 260,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      }
+     ]
+    }
+   },
+   "PaymentsToAcquirePropertyPlantAndEquipment": {
+    "units": {
+     "USD": [
+      {
+       "end": "2025-09-27",
+       "val": 60,
+       "form": "10-K",
+       "fp": "FY",
+       "filed": "2025-11-01",
+       "start": "2024-09-29"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

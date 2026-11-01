@@ -1,0 +1,43 @@
+{
+ "data": {
+  "total_hits": 2,
+  "list": [
+   {
+    "art_code": "AN202610241234567890",
+    "title": "测试样本公司2026年第三季度报告",
+    "notice_date": "2026-10-24 00:00:00",
+    "display_time": "2026-10-24 18:30:12:466",
+    "codes": [
+     {
+      "stock_code": "600519",
+      "short_name": "测试样本公司",
+      "ann_type": "A,SHA"
+     }
+    ],
+    "columns": [
+     {
+      "column_code": "001002",
+      "column_name": "三季度报告全文"
+     }
+    ]
+   },
+   {
+    "art_code": "AN202610241234567891",
+    "title": "测试样本二:关于召开股东大会的通知",
+    "notice_date": "2026-10-23 00:00:00",
+    "codes": [
+     {
+      "stock_code": "300750",
+      "short_name": "测试样本二",
+      "ann_type": "A,SZA"
+     }
+    ],
+    "columns": [
+     {
+      "column_name": "股东大会通知"
+     }
+    ]
+   }
+  ]
+ }
+}

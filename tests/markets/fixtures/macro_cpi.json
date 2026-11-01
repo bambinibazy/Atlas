@@ -1,0 +1,21 @@
+{
+ "result": {
+  "data": [
+   {
+    "REPORT_DATE": "2026-09-01 00:00:00",
+    "TIME": "2026年09月份",
+    "NATIONAL_SAME": 0.4
+   },
+   {
+    "REPORT_DATE": "2026-08-01 00:00:00",
+    "TIME": "2026年08月份",
+    "NATIONAL_SAME": 0.1
+   },
+   {
+    "REPORT_DATE": "2026-07-01 00:00:00",
+    "TIME": "2026年07月份",
+    "NATIONAL_SAME": null
+   }
+  ]
+ }
+}
