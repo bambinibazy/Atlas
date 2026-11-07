@@ -1,0 +1,114 @@
+{
+  "updated": "2026-11-06T17:38:35Z",
+  "site_name": {
+    "zh": "AI 前沿",
+    "en": "AI Frontier"
+  },
+  "tagline": {
+    "zh": "每天自动收集 AI 及交叉学科的最新论文、开源项目与模型",
+    "en": "Daily digest of new AI papers, open-source repos and models across disciplines"
+  },
+  "retention_days": 60,
+  "total": 3446,
+  "new_this_run": 341,
+  "topics": [
+    {
+      "id": "brain",
+      "name": {
+        "zh": "脑科学",
+        "en": "Brain Science"
+      },
+      "description": {
+        "zh": "NeuroAI、脑机接口、神经解码、类脑计算",
+        "en": "NeuroAI, brain-computer interfaces, neural decoding, neuromorphic computing"
+      },
+      "count": 220,
+      "count_7d": 116
+    },
+    {
+      "id": "models",
+      "name": {
+        "zh": "AI 模型",
+        "en": "AI Models"
+      },
+      "description": {
+        "zh": "大语言模型、多模态、扩散模型、推理与训练方法",
+        "en": "LLMs, multimodal and diffusion models, reasoning, training methods"
+      },
+      "count": 1507,
+      "count_7d": 782
+    },
+    {
+      "id": "apps",
+      "name": {
+        "zh": "AI 应用",
+        "en": "AI Applications"
+      },
+      "description": {
+        "zh": "智能体、RAG、具身智能与机器人、代码生成、自动驾驶等落地方向",
+        "en": "Agents, RAG, embodied AI and robotics, code generation, autonomous driving"
+      },
+      "count": 968,
+      "count_7d": 438
+    },
+    {
+      "id": "medicine",
+      "name": {
+        "zh": "AI 医学",
+        "en": "AI for Medicine"
+      },
+      "description": {
+        "zh": "医学影像、临床大模型、药物发现、蛋白质与基因组",
+        "en": "Medical imaging, clinical LLMs, drug discovery, proteins and genomics"
+      },
+      "count": 627,
+      "count_7d": 357
+    },
+    {
+      "id": "math",
+      "name": {
+        "zh": "AI 数学",
+        "en": "AI for Math"
+      },
+      "description": {
+        "zh": "定理证明、形式化（Lean/Isabelle）、数学推理、AI 辅助发现",
+        "en": "Theorem proving, formalization (Lean/Isabelle), mathematical reasoning, AI-assisted discovery"
+      },
+      "count": 275,
+      "count_7d": 104
+    },
+    {
+      "id": "physics",
+      "name": {
+        "zh": "AI 物理",
+        "en": "AI for Physics"
+      },
+      "description": {
+        "zh": "物理信息神经网络、神经算子、量子、材料、天气与气候",
+        "en": "Physics-informed networks, neural operators, quantum, materials, weather and climate"
+      },
+      "count": 428,
+      "count_7d": 197
+    },
+    {
+      "id": "finance",
+      "name": {
+        "zh": "AI 金融",
+        "en": "AI for Finance"
+      },
+      "description": {
+        "zh": "量化交易、金融大模型、风险与信用、资产定价",
+        "en": "Quant trading, financial LLMs, risk and credit, asset pricing"
+      },
+      "count": 306,
+      "count_7d": 166
+    }
+  ],
+  "sources": {
+    "huggingface": 427,
+    "github": 279,
+    "biorxiv": 200,
+    "medrxiv": 106,
+    "arxiv": 2538
+  }
+}

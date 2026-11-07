@@ -1,0 +1,173 @@
+{
+ "financials_updated": "2026-11-01T06:12:26Z",
+ "updated": "2026-11-07T09:16:28Z",
+ "site_name": "星图智策",
+ "site_name_en": "Atlas",
+ "tagline": "企业管理与财务决策的资讯、工具、方法和上市公司财报分析",
+ "summary": {
+  "companies": 54,
+  "kb_articles": 40,
+  "news_total": 549
+ },
+ "sources_status": {
+  "fin-a": {
+   "ok": true,
+   "count": 26,
+   "name": "A 股财报（东方财富）",
+   "at": "2026-11-01T06:12:26Z"
+  },
+  "fin-hk": {
+   "ok": true,
+   "count": 8,
+   "name": "港股财报（东方财富）",
+   "at": "2026-11-01T06:12:26Z"
+  },
+  "fin-us": {
+   "ok": true,
+   "count": 20,
+   "name": "美股财报（SEC XBRL）",
+   "at": "2026-11-01T06:12:26Z",
+   "partial": "1 家失败；埃克森美孚: XOM 没有年度数据"
+  },
+  "mitsmr": {
+   "ok": true,
+   "count": 16,
+   "name": "MIT Sloan Management Review",
+   "at": "2026-11-07T09:15:31Z"
+  },
+  "wharton": {
+   "ok": true,
+   "count": 9,
+   "name": "Knowledge at Wharton",
+   "at": "2026-11-07T09:15:31Z"
+  },
+  "mckinsey": {
+   "ok": true,
+   "count": 50,
+   "name": "McKinsey Insights",
+   "at": "2026-11-07T09:15:32Z"
+  },
+  "hbr": {
+   "ok": true,
+   "count": 40,
+   "name": "Harvard Business Review",
+   "at": "2026-11-07T09:15:32Z"
+  },
+  "corpgov": {
+   "ok": true,
+   "count": 20,
+   "name": "Harvard Law School Forum on Corporate Governance",
+   "at": "2026-11-07T09:15:33Z"
+  },
+  "cfodive": {
+   "ok": true,
+   "count": 10,
+   "name": "CFO Dive",
+   "at": "2026-11-07T09:15:33Z"
+  },
+  "accountingtoday": {
+   "ok": true,
+   "count": 9,
+   "name": "Accounting Today",
+   "at": "2026-11-07T09:15:35Z"
+  },
+  "sec-press": {
+   "ok": true,
+   "count": 21,
+   "name": "SEC",
+   "at": "2026-11-07T09:15:35Z"
+  },
+  "36kr": {
+   "ok": true,
+   "count": 0,
+   "name": "36氪",
+   "at": "2026-11-07T09:15:40Z"
+  },
+  "pwc-cn-gn": {
+   "ok": true,
+   "count": 14,
+   "name": "普华永道中国 · 洞察",
+   "at": "2026-11-07T09:15:40Z"
+  },
+  "techreview": {
+   "ok": true,
+   "count": 10,
+   "name": "MIT 科技评论",
+   "at": "2026-11-07T09:15:41Z"
+  },
+  "sspai": {
+   "ok": true,
+   "count": 4,
+   "name": "少数派 · 效率工具",
+   "at": "2026-11-07T09:15:42Z"
+  },
+  "thepaper": {
+   "ok": true,
+   "count": 6,
+   "name": "澎湃新闻",
+   "at": "2026-11-07T09:15:42Z"
+  },
+  "gov-bmwj": {
+   "ok": true,
+   "count": 0,
+   "name": "国务院 · 部门文件",
+   "at": "2026-11-07T09:15:44Z"
+  },
+  "chinatax": {
+   "ok": true,
+   "count": 8,
+   "name": "国家税务总局",
+   "at": "2026-11-07T09:15:49Z"
+  },
+  "csrc-news": {
+   "ok": true,
+   "count": 16,
+   "name": "中国证监会",
+   "at": "2026-11-07T09:16:10Z"
+  },
+  "csrc-rules": {
+   "ok": false,
+   "count": 0,
+   "name": "证监会规章",
+   "error": "RSSHub 失败：localhost:1200 HTTPConnectionPool(host='localhost', port=1200): Max retries；rsshub.app HTTP 403",
+   "at": "2026-11-07T09:16:13Z"
+  },
+  "mof-kjs": {
+   "ok": true,
+   "count": 0,
+   "name": "财政部会计司",
+   "at": "2026-11-07T09:16:16Z"
+  },
+  "mof-news": {
+   "ok": true,
+   "count": 19,
+   "name": "财政部 · 财政新闻",
+   "at": "2026-11-07T09:16:18Z"
+  },
+  "sasac": {
+   "ok": true,
+   "count": 16,
+   "name": "国务院国资委",
+   "at": "2026-11-07T09:16:24Z"
+  },
+  "kpmg-cn": {
+   "ok": true,
+   "count": 2,
+   "name": "毕马威中国 · 洞察",
+   "at": "2026-11-07T09:16:24Z"
+  },
+  "deloitte-cn": {
+   "ok": true,
+   "count": 15,
+   "name": "德勤中国 · 洞察",
+   "at": "2026-11-07T09:16:25Z"
+  },
+  "ey-cn": {
+   "ok": true,
+   "count": 9,
+   "name": "安永中国 · 洞察",
+   "at": "2026-11-07T09:16:28Z"
+  }
+ },
+ "news_updated": "2026-11-07T09:16:28Z"
+}

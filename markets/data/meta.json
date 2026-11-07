@@ -1,0 +1,342 @@
+{
+ "updated": "2026-11-07T09:15:30Z",
+ "site_name": {
+  "zh": "行情快讯",
+  "en": "Markets"
+ },
+ "tagline": {
+  "zh": "每 30 分钟自动汇总 A 股、港股、美股、全球宏观与加密市场的快讯、行情、公告和经济数据",
+  "en": "Flash news, quotes, filings and macro data across China, Hong Kong, US, global and crypto markets, refreshed every 30 minutes"
+ },
+ "timezone": "Asia/Shanghai",
+ "retention_days": {
+  "flash": 3,
+  "news": 10,
+  "filing": 14,
+  "policy": 30
+ },
+ "total": 7708,
+ "count_24h": 1669,
+ "markets": [
+  {
+   "id": "cn",
+   "name": {
+    "zh": "A 股",
+    "en": "China A"
+   },
+   "count": 1043,
+   "count_24h": 134
+  },
+  {
+   "id": "hk",
+   "name": {
+    "zh": "港股",
+    "en": "Hong Kong"
+   },
+   "count": 177,
+   "count_24h": 19
+  },
+  {
+   "id": "us",
+   "name": {
+    "zh": "美股",
+    "en": "US"
+   },
+   "count": 1489,
+   "count_24h": 357
+  },
+  {
+   "id": "global",
+   "name": {
+    "zh": "全球宏观",
+    "en": "Global macro"
+   },
+   "count": 856,
+   "count_24h": 163
+  },
+  {
+   "id": "crypto",
+   "name": {
+    "zh": "加密货币",
+    "en": "Crypto"
+   },
+   "count": 288,
+   "count_24h": 31
+  }
+ ],
+ "types": {
+  "flash": 5572,
+  "news": 1441,
+  "filing": 677,
+  "policy": 18
+ },
+ "source_names": {
+  "cls": {
+   "zh": "财联社",
+   "en": "CLS"
+  },
+  "sina": {
+   "zh": "新浪财经",
+   "en": "Sina Finance"
+  },
+  "eastmoney": {
+   "zh": "东方财富",
+   "en": "Eastmoney"
+  },
+  "ths": {
+   "zh": "同花顺",
+   "en": "10jqka"
+  },
+  "cnbc-top": {
+   "zh": "CNBC",
+   "en": "CNBC"
+  },
+  "cnbc-finance": {
+   "zh": "CNBC Finance",
+   "en": "CNBC Finance"
+  },
+  "cnbc-economy": {
+   "zh": "CNBC Economy",
+   "en": "CNBC Economy"
+  },
+  "bloomberg-markets": {
+   "zh": "Bloomberg",
+   "en": "Bloomberg"
+  },
+  "bloomberg-economics": {
+   "zh": "Bloomberg Economics",
+   "en": "Bloomberg Economics"
+  },
+  "ft-markets": {
+   "zh": "Financial Times",
+   "en": "Financial Times"
+  },
+  "ft-economy": {
+   "zh": "FT Global Economy",
+   "en": "FT Global Economy"
+  },
+  "marketwatch": {
+   "zh": "MarketWatch",
+   "en": "MarketWatch"
+  },
+  "seekingalpha": {
+   "zh": "Seeking Alpha",
+   "en": "Seeking Alpha"
+  },
+  "coindesk": {
+   "zh": "CoinDesk",
+   "en": "CoinDesk"
+  },
+  "cointelegraph": {
+   "zh": "Cointelegraph",
+   "en": "Cointelegraph"
+  },
+  "fed": {
+   "zh": "Federal Reserve",
+   "en": "Federal Reserve"
+  },
+  "ecb": {
+   "zh": "ECB",
+   "en": "ECB"
+  },
+  "sec-press": {
+   "zh": "SEC",
+   "en": "SEC"
+  },
+  "a_share": {
+   "zh": "东方财富公告",
+   "en": "Eastmoney filings"
+  },
+  "hkex": {
+   "zh": "港交所披露易",
+   "en": "HKEXnews"
+  },
+  "sec": {
+   "zh": "SEC EDGAR",
+   "en": "SEC EDGAR"
+  },
+  "macro": {
+   "zh": "宏观数据",
+   "en": "Macro data"
+  },
+  "quotes-em": {
+   "zh": "东方财富行情",
+   "en": "Eastmoney quotes"
+  },
+  "quotes-yield": {
+   "zh": "国债收益率",
+   "en": "Bond yields"
+  },
+  "quotes-gecko": {
+   "zh": "CoinGecko",
+   "en": "CoinGecko"
+  },
+  "macro-cn": {
+   "zh": "中国宏观",
+   "en": "China macro"
+  },
+  "macro-us": {
+   "zh": "美国宏观 FRED",
+   "en": "US macro (FRED)"
+  }
+ },
+ "sources_status": {
+  "cls": {
+   "ok": true,
+   "count": 50,
+   "name": "财联社",
+   "at": "2026-11-07T09:11:53Z"
+  },
+  "sina": {
+   "ok": true,
+   "count": 300,
+   "name": "新浪财经",
+   "at": "2026-11-07T09:11:55Z"
+  },
+  "eastmoney": {
+   "ok": true,
+   "count": 200,
+   "name": "东方财富",
+   "at": "2026-11-07T09:12:00Z"
+  },
+  "ths": {
+   "ok": true,
+   "count": 200,
+   "name": "同花顺",
+   "at": "2026-11-07T09:12:02Z"
+  },
+  "cnbc-top": {
+   "ok": true,
+   "count": 30,
+   "name": "CNBC",
+   "at": "2026-11-07T09:12:02Z"
+  },
+  "cnbc-finance": {
+   "ok": true,
+   "count": 21,
+   "name": "CNBC Finance",
+   "at": "2026-11-07T09:12:03Z"
+  },
+  "cnbc-economy": {
+   "ok": true,
+   "count": 20,
+   "name": "CNBC Economy",
+   "at": "2026-11-07T09:12:03Z"
+  },
+  "bloomberg-markets": {
+   "ok": true,
+   "count": 20,
+   "name": "Bloomberg",
+   "at": "2026-11-07T09:12:04Z"
+  },
+  "bloomberg-economics": {
+   "ok": true,
+   "count": 20,
+   "name": "Bloomberg Economics",
+   "at": "2026-11-07T09:12:04Z"
+  },
+  "ft-markets": {
+   "ok": true,
+   "count": 25,
+   "name": "Financial Times",
+   "at": "2026-11-07T09:12:05Z"
+  },
+  "ft-economy": {
+   "ok": true,
+   "count": 25,
+   "name": "FT Global Economy",
+   "at": "2026-11-07T09:12:05Z"
+  },
+  "marketwatch": {
+   "ok": true,
+   "count": 10,
+   "name": "MarketWatch",
+   "at": "2026-11-07T09:12:06Z"
+  },
+  "seekingalpha": {
+   "ok": true,
+   "count": 7,
+   "name": "Seeking Alpha",
+   "at": "2026-11-07T09:12:06Z"
+  },
+  "coindesk": {
+   "ok": true,
+   "count": 25,
+   "name": "CoinDesk",
+   "at": "2026-11-07T09:12:07Z"
+  },
+  "cointelegraph": {
+   "ok": true,
+   "count": 30,
+   "name": "Cointelegraph",
+   "at": "2026-11-07T09:12:07Z"
+  },
+  "fed": {
+   "ok": true,
+   "count": 3,
+   "name": "Federal Reserve",
+   "at": "2026-11-07T09:12:08Z"
+  },
+  "ecb": {
+   "ok": true,
+   "count": 12,
+   "name": "ECB",
+   "at": "2026-11-07T09:12:09Z"
+  },
+  "sec-press": {
+   "ok": true,
+   "count": 3,
+   "name": "SEC",
+   "at": "2026-11-07T09:12:09Z"
+  },
+  "a_share": {
+   "ok": true,
+   "count": 122,
+   "name": "A 股公告",
+   "at": "2026-11-07T09:12:17Z"
+  },
+  "hkex": {
+   "ok": true,
+   "count": 9,
+   "name": "港交所披露易",
+   "at": "2026-11-07T09:12:26Z"
+  },
+  "sec": {
+   "ok": true,
+   "count": 17,
+   "name": "SEC EDGAR",
+   "at": "2026-11-07T09:12:28Z"
+  },
+  "quotes-em": {
+   "ok": true,
+   "count": 29,
+   "name": "东方财富行情",
+   "at": "2026-11-07T09:12:38Z"
+  },
+  "quotes-yield": {
+   "ok": true,
+   "count": 3,
+   "name": "国债收益率",
+   "at": "2026-11-07T09:12:39Z"
+  },
+  "quotes-gecko": {
+   "ok": true,
+   "count": 4,
+   "name": "CoinGecko",
+   "at": "2026-11-07T09:12:48Z"
+  },
+  "macro-cn": {
+   "ok": true,
+   "count": 6,
+   "name": "中国宏观",
+   "at": "2026-11-07T09:12:53Z"
+  },
+  "macro-us": {
+   "ok": false,
+   "count": 0,
+   "name": "美国宏观 FRED",
+   "error": "us-gdp: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Max retries exceeded with url: /graph/fredgraph.csv?id=A191RL1Q225SBEA&cosd=2022-11-08 (Caused by ReadTimeoutError(\"HTTPSConnectionPo",
+   "at": "2026-11-07T09:15:24Z"
+  }
+ }
+}
