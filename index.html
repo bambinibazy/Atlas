@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>星图智策</title>
+  <meta name="description" content="企业管理与财务决策一站汇总：A 股、港股、美股行情与 7×24 快讯，管理资讯与财税政策，11 个财务决策工具，40 篇管理方法讲解，上市公司财报对比，以及 AI 前沿论文与开源项目。">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#051C2C">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23051C2C'/%3E%3Cpath d='M8 10h16M8 16h16M8 22h16' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M8 26h16' stroke='%232251FF' stroke-width='2.4'/%3E%3C/svg%3E">
+  <link rel="alternate" type="application/rss+xml" title="星图智策 · 资讯与政策" href="feed.xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <script src="assets/site.js" data-base="./"></script>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="foot-runs" id="runs"></p>
+      <details class="status" id="status">
+        <summary id="status-sum">资讯与财报数据源状态</summary>
+        <ul id="status-list"></ul>
+      </details>
+      <p>本站内容仅供学习和参考，不构成投资、财务、税务或法律建议。资讯版权归原发布方所有，本站只收录标题、摘要与原文链接；上市公司数据来自东方财富和美国 SEC，可能存在抽取误差，请以公司公告为准。<a href="feed.xml">订阅资讯 RSS</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/fin.js"></script>
+  <script src="assets/core.js"></script>
+  <script src="assets/tools.js"></script>
+  <script src="assets/links.js"></script>
+  <script src="assets/pages.js"></script>
+  <script>
+    (function () {
+      const { h, F } = App;
+      App.load("meta.json").then((m) => {
+        const st = m.sources_status || {};
+        const ids = Object.keys(st);
+        const ok = ids.filter((k) => st[k].ok).length;
+        document.getElementById("status-sum").textContent = `资讯与财报数据源状态：${ok} / ${ids.length} 正常`;
+        const ul = document.getElementById("status-list");
+        ids.sort((a, b) => (st[a].ok - st[b].ok) || a.localeCompare(b)).forEach((id) => {
+          const s = st[id];
+          const why = s.ok ? s.partial : s.error;
+          const li = h("li." + (s.ok ? "ok" : "bad"), h("div", s.name + " ",
+            h("span", s.ok ? `${s.count} 条${s.partial ? "（部分失败）" : ""}` : "失败"),
+            !s.ok && why ? h("small.err", window.Site.explainError(why)) : null));
+          if (why) li.title = why; // 鼠标悬停显示原始报错
+          ul.append(li);
+        });
+      }).catch(() => { document.getElementById("status").hidden = true; });
+      // 各栏目最近一次成功更新的时间
+      const NAMES = { markets: "行情快讯", news: "资讯", ai: "AI 前沿", financials: "公司财报" };
+      App.load("runs.json").then((r) => {
+        const parts = Object.keys(NAMES).filter((k) => r[k] && r[k].last_ok).map((k) => `${NAMES[k]}更新于 ${F.ago(r[k].last_ok)}`);
+        document.getElementById("runs").textContent = parts.join("，");
+      }).catch(() => {});
+      App.render();
+    })();
+  </script>
+</body>
+</html>
