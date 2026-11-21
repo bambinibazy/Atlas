@@ -1,0 +1,93 @@
+/* ============================================================
+   全站共享：配色、字体、顶部导航
+   设计：深海军蓝 + 白底高对比，电光蓝做强调；方角、细线分隔、留白多。
+   标题用高对比衬线体，正文用无衬线体。只用系统字体，不加载境外字体服务。
+   各栏目的样式表（assets/style.css、markets/assets/style.css、ai/assets/style.css）
+   都引用这里的 --c-* 变量，改配色只需要改这一个文件。
+   ============================================================ */
+
+:root {
+  --c-navy: #051C2C;
+  --c-navy-2: #0B2B44;
+  --c-blue: #2251FF;
+  --c-cyan: #00A9F4;
+  --c-bg: #FFFFFF;
+  --c-tint: #F5F6F8;
+  --c-ink: #051C2C;
+  --c-ink-2: #33424F;
+  --c-muted: #5B6670;
+  --c-line: #DFE3E8;
+  --c-line-2: #ECEFF2;
+  --c-line-strong: #B4BCC5;
+  --c-link: #2251FF;
+  --c-warn: #A65A00;
+  --c-warn-soft: #FFF3E3;
+  --c-on-navy: #FFFFFF;
+  --c-on-navy-2: #A9B6C2;
+  --c-hover: rgba(5, 28, 44, 0.045);
+
+  --f-serif: "Bodoni 72", "Bodoni MT", Didot, Georgia, "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC",
+             "Source Han Serif CN", "PingFang SC", "Microsoft YaHei", serif;
+  --f-sans: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+            "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --top-h: 64px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-navy: #020F18; --c-navy-2: #0A2638; --c-bg: #051C2C; --c-tint: #0A2638; --c-ink: #FFFFFF; --c-ink-2: #D3DCE4;
+    --c-muted: #A3B1BE; --c-line: #1D3A50; --c-line-2: #13304A; --c-line-strong: #335572; --c-link: #00A9F4;
+    --c-warn: #F2A64A; --c-warn-soft: #2B2414; --c-hover: rgba(255, 255, 255, 0.05);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --c-navy: #020F18; --c-navy-2: #0A2638; --c-bg: #051C2C; --c-tint: #0A2638; --c-ink: #FFFFFF; --c-ink-2: #D3DCE4;
+  --c-muted: #A3B1BE; --c-line: #1D3A50; --c-line-2: #13304A; --c-line-strong: #335572; --c-link: #00A9F4;
+  --c-warn: #F2A64A; --c-warn-soft: #2B2414; --c-hover: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+
+/* ---------- 顶部导航（由 assets/site.js 生成） ---------- */
+.site-top {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--c-bg); color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
+  font-family: var(--f-sans);
+}
+.site-top-inner {
+  display: flex; align-items: stretch; gap: 36px;
+  max-width: 1240px; margin: 0 auto; padding: 0 40px; height: var(--top-h);
+}
+.site-brand {
+  display: flex; align-items: center; flex-shrink: 0;
+  font: 400 22px/1 var(--f-serif); letter-spacing: 0.06em;
+  color: var(--c-ink) !important; text-decoration: none !important;
+}
+.site-top .nav { display: flex; gap: 26px; flex: 1; overflow-x: auto; scrollbar-width: none; }
+.site-top .nav::-webkit-scrollbar { display: none; }
+.site-top .nav a {
+  display: flex; align-items: center; white-space: nowrap;
+  font-size: 15px; color: var(--c-muted) !important; text-decoration: none !important;
+  border-bottom: 3px solid transparent; padding-top: 3px; opacity: 1; background: none; border-radius: 0;
+}
+.site-top .nav a:hover { color: var(--c-ink) !important; }
+.site-top .nav a[aria-current="page"] { color: var(--c-ink) !important; font-weight: 700; border-bottom-color: var(--c-blue); }
+.site-theme {
+  align-self: center; flex-shrink: 0; width: 34px; height: 34px; padding: 0;
+  display: grid; place-items: center; cursor: pointer;
+  border: 1px solid var(--c-line-strong); border-radius: 0; background: transparent; color: var(--c-ink);
+}
+.site-theme:hover { border-color: var(--c-ink); }
+.site-top a:focus-visible, .site-theme:focus-visible { outline: 2px solid var(--c-cyan); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  :root { --top-h: 0px; }
+  .site-top { position: static; }
+  .site-top-inner { height: auto; flex-wrap: wrap; gap: 0 12px; padding: 0 16px; }
+  .site-brand { padding: 14px 0 6px; font-size: 20px; }
+  .site-theme { margin-left: auto; margin-top: 6px; }
+  .site-top .nav { order: 3; flex-basis: 100%; gap: 22px; margin: 0 -16px; padding: 0 16px; }
+  .site-top .nav a { padding: 10px 0 8px; font-size: 14.5px; }
+}
+@media print { .site-top { display: none; } }
