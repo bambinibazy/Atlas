@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN" data-section="ai">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 前沿 · 星图智策</title>
+  <meta name="description" content="每天自动收集 AI 及交叉学科（脑科学、医学、数学、物理、金融）的最新论文、开源项目与模型">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='13' width='4' height='6' fill='%237B4FD6'/%3E%3Crect x='6' y='9' width='4' height='14' fill='%232D5BD8'/%3E%3Crect x='10' y='5' width='4' height='22' fill='%230D8C7C'/%3E%3Crect x='14' y='8' width='4' height='16' fill='%23C7354F'/%3E%3Crect x='18' y='11' width='4' height='10' fill='%23B27A0C'/%3E%3Crect x='22' y='7' width='4' height='18' fill='%231E8AC0'/%3E%3Crect x='26' y='12' width='4' height='8' fill='%233D8B2C'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#051C2C">
+  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#list" data-i18n="skip">跳到内容</a>
+  <script src="../assets/site.js" data-base="../"></script>
+
+  <section class="hero-band" aria-labelledby="site-name">
+    <div class="masthead wrap">
+      <div class="brand">
+        <h1 id="site-name">AI 前沿</h1>
+        <p id="tagline" class="tagline"></p>
+      </div>
+      <div class="masthead-side">
+        <p class="updated" id="updated"></p>
+      </div>
+    </div>
+
+    <div class="spectrum-wrap wrap">
+      <h2 id="spectrum-title" class="visually-hidden" data-i18n="topics">主题</h2>
+      <div class="spectrum" id="spectrum" role="tablist" aria-label="主题"></div>
+      <p class="spectrum-note" id="spectrum-note"></p>
+    </div>
+  </section>
+
+  <section class="controls wrap" aria-label="筛选">
+    <div class="search">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="filters">
+      <div class="seg" id="type-seg" role="radiogroup"></div>
+      <label class="select"><span class="visually-hidden" data-i18n="source">来源</span>
+        <select id="source-sel"></select></label>
+      <label class="select"><span class="visually-hidden" data-i18n="range">时间</span>
+        <select id="range-sel"></select></label>
+      <div class="seg" id="sort-seg" role="radiogroup"></div>
+      <button type="button" class="saved-btn" id="saved-btn" aria-pressed="false"></button>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="result-bar">
+      <p id="result-count" aria-live="polite"></p>
+      <button type="button" class="link-btn" id="reset-btn" hidden></button>
+    </div>
+    <ol class="list" id="list"></ol>
+    <div class="more"><button type="button" id="more-btn" hidden></button></div>
+    <div class="empty" id="empty" hidden></div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap"><p id="foot-text"></p></div>
+  </footer>
+
+  <template id="row-tpl">
+    <li class="row">
+      <div class="ticks" aria-hidden="true"></div>
+      <div class="when"><time></time><span class="badge-new"></span></div>
+      <article class="body">
+        <h3 class="title"><a target="_blank" rel="noopener"></a></h3>
+        <p class="byline"><span class="kind"></span><span class="srcs"></span><span class="authors"></span></p>
+        <p class="tldr"></p>
+        <p class="summary"></p>
+        <div class="foot-row">
+          <ul class="topic-tags"></ul>
+          <span class="metrics"></span>
+          <span class="links"></span>
+        </div>
+      </article>
+      <button type="button" class="star" aria-pressed="false">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 2.2l2.35 4.9 5.35.7-3.9 3.75.95 5.3L10 14.3l-4.75 2.55.95-5.3L2.3 7.8l5.35-.7z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="assets/i18n.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
